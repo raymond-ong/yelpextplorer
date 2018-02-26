@@ -1,11 +1,13 @@
-
-Ext.define('YelpExtplorer.view.main.Main',{
+Ext.define('YelpExtplorer.view.main.Main', {
     extend: 'Ext.panel.Panel',
-    xtype:'main',
+    xtype: 'main',
 
     requires: [
+        'Ext.plugin.Viewport',
+
         'YelpExtplorer.view.main.MainController',
-        'YelpExtplorer.view.main.MainModel'
+        'YelpExtplorer.view.main.MainModel',
+        'YelpExtplorer.view.Banner'
     ],
 
     controller: 'main-main',
@@ -13,5 +15,21 @@ Ext.define('YelpExtplorer.view.main.Main',{
         type: 'main-main'
     },
 
-    html: 'Hello, World!! Classic'
+    dockedItems: [{
+        dock: 'top',
+        dockedItems: [{
+            dock: 'top',
+            xtype: 'banner'
+        }],
+    }],
+    layout: 'border',
+    items: [{
+        region: 'center',
+        html: 'businessestabpanel'
+    }, {
+        region: 'east',
+        html: 'businessdetail',
+        width: 130
+    }]
+
 });
